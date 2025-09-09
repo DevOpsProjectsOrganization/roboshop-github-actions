@@ -1,0 +1,48 @@
+on:
+  workflow_call:
+jobs:
+  build:
+    runs-on: [self-hosted, linux, x64]
+    steps:
+      - uses: actions/checkout@v4
+      - name: terraform apply
+        run: make dev-apply
+  test:
+    runs-on: [self-hosted, linux, x64]
+    needs: build
+    steps:
+      - uses: actions/checkout@v4
+      - name: terraform apply
+        run: make dev-apply
+  dev-deploy:
+    runs-on: [self-hosted, linux, x64]
+    needs: test
+    environment: dev
+    steps:
+      - uses: actions/checkout@v4
+      - name: terraform apply
+        run: make dev-apply
+  qa-deploy:
+    runs-on: [self-hosted, linux, x64]
+    needs: dev-deploy
+    environment: qa
+    steps:
+      - uses: actions/checkout@v4
+      - name: terraform apply
+        run: make dev-apply
+  uat-deploy:
+    runs-on: [self-hosted, linux, x64]
+    needs: qa-deploy
+    environment: uat
+    steps:
+      - uses: actions/checkout@v4
+      - name: terraform apply
+        run: make dev-apply
+  prod-deploy:
+    runs-on: [self-hosted, linux, x64]
+    needs: uat-deploy 
+    environment: prod
+    steps:
+      - uses: actions/checkout@v4
+      - name: terraform apply
+        run: make dev-apply
