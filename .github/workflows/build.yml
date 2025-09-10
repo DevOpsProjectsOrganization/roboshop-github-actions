@@ -2,7 +2,7 @@ on:
   workflow_call:
 jobs:
   nodejs:
-    if:  inputs.app_type == "nodejs"
+    if:  inputs.app_type == 'nodejs'
     runs-on: [self-hosted, linux, x64]
     steps:
       - uses: actions/checkout@v4
@@ -10,7 +10,7 @@ jobs:
         run: echo Hello, world!
 
   java:
-    if:  inputs.app_type == "java"
+    if:  inputs.app_type == 'java'
     runs-on: [self-hosted, linux, x64]
     steps:
       - uses: actions/checkout@v4
@@ -18,7 +18,7 @@ jobs:
         run: echo Hello, world!
 
   python:
-    if:  inputs.app_type == "python"
+    if:  inputs.app_type == 'python'
     runs-on: [self-hosted, linux, x64]
     steps:
       - uses: actions/checkout@v4
