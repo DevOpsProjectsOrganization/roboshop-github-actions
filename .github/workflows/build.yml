@@ -28,3 +28,10 @@ jobs:
       - uses: actions/checkout@v4
       - name: python
         run: echo Hello, world!
+  nginx:
+    if:  inputs.app_type == 'nginx'
+    runs-on: [self-hosted, linux, x64]
+    steps:
+      - uses: actions/checkout@v4
+      - name: python
+        run: echo Hello, world!
