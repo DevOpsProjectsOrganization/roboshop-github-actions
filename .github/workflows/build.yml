@@ -1,0 +1,26 @@
+on:
+  workflow_call:
+jobs:
+  build:
+    if:  inputs.app_type == "nodejs"
+    runs-on: [self-hosted, linux, x64]
+    steps:
+      - uses: actions/checkout@v4
+      - name: nodejs
+        run: echo Hello, world!
+
+  build:
+    if:  inputs.app_type == "java"
+    runs-on: [self-hosted, linux, x64]
+    steps:
+      - uses: actions/checkout@v4
+      - name: java
+        run: echo Hello, world!
+
+  build:
+    if:  inputs.app_type == "python"
+    runs-on: [self-hosted, linux, x64]
+    steps:
+      - uses: actions/checkout@v4
+      - name: python
+        run: echo Hello, world!

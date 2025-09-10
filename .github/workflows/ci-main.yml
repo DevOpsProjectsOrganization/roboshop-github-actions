@@ -1,48 +1,52 @@
 on:
   workflow_call:
+    inputs:
+      app_type: 
+        required: true
+        type: string
 jobs:
-  build:
-    runs-on: [self-hosted, linux, x64]
-    steps:
-      - uses: actions/checkout@v4
-      - name: Run a one-line script
-        run: echo Hello, world!
-  test:
-    runs-on: [self-hosted, linux, x64]
-    needs: build
-    steps:
-      - uses: actions/checkout@v4
-      - name: Run a one-line script
-        run: echo Hello, world!
-  dev-deploy:
-    runs-on: [self-hosted, linux, x64]
-    needs: test
-    environment: dev
-    steps:
-      - uses: actions/checkout@v4
-      - name: Run a one-line script
-        run: echo Hello, world!
-  qa-deploy:
-    runs-on: [self-hosted, linux, x64]
-    needs: dev-deploy
-    environment: qa
-    steps:
-      - uses: actions/checkout@v4
-      - name: Run a one-line script
-        run: echo Hello, world!
-  uat-deploy:
-    runs-on: [self-hosted, linux, x64]
-    needs: qa-deploy
-    environment: uat
-    steps:
-      - uses: actions/checkout@v4
-      - name: Run a one-line script
-        run: echo Hello, world!
-  prod-deploy:
-    runs-on: [self-hosted, linux, x64]
-    needs: uat-deploy 
-    environment: prod
-    steps:
-      - uses: actions/checkout@v4
-      - name: Run a one-line script
-        run: echo Hello, world!
+  reusable_workflow:
+    uses: DevOpsProjectsOrganization/roboshop-github-actions/.github/workflows/build.yml@main
+    with : 
+      app_type: nodejs
+
+  # test:
+  #   runs-on: [self-hosted, linux, x64]
+  #   needs: build
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #     - name: Run a one-line script
+  #       run: echo Hello, world!
+  # dev-deploy:
+  #   runs-on: [self-hosted, linux, x64]
+  #   needs: test
+  #   environment: dev
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #     - name: Run a one-line script
+  #       run: echo Hello, world!
+  # qa-deploy:
+  #   runs-on: [self-hosted, linux, x64]
+  #   needs: dev-deploy
+  #   environment: qa
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #     - name: Run a one-line script
+  #       run: echo Hello, world!
+  # uat-deploy:
+  #   runs-on: [self-hosted, linux, x64]
+  #   needs: qa-deploy
+  #   environment: uat
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #     - name: Run a one-line script
+  #       run: echo Hello, world!
+  # prod-deploy:
+  #   runs-on: [self-hosted, linux, x64]
+  #   needs: uat-deploy 
+  #   environment: prod
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #     - name: Run a one-line script
+  #       run: echo Hello, world!
+  
