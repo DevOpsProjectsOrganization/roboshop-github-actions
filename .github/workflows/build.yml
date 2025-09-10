@@ -1,7 +1,7 @@
 on:
   workflow_call:
 jobs:
-  build:
+  nodejs:
     if:  inputs.app_type == "nodejs"
     runs-on: [self-hosted, linux, x64]
     steps:
@@ -9,7 +9,7 @@ jobs:
       - name: nodejs
         run: echo Hello, world!
 
-  build:
+  java:
     if:  inputs.app_type == "java"
     runs-on: [self-hosted, linux, x64]
     steps:
@@ -17,7 +17,7 @@ jobs:
       - name: java
         run: echo Hello, world!
 
-  build:
+  python:
     if:  inputs.app_type == "python"
     runs-on: [self-hosted, linux, x64]
     steps:
