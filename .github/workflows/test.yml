@@ -1,0 +1,29 @@
+on:
+  workflow_call:
+    inputs:
+      app_type: 
+        required: true
+        type: string
+jobs:
+  java:
+    if:  inputs.app_type == 'java'
+    runs-on: [self-hosted, linux, x64]
+    steps:
+      - uses: actions/checkout@v4
+      - name: java
+        run : echo mvn test
+  nodejs:
+    if:  inputs.app_type == 'java'
+    runs-on: [self-hosted, linux, x64]
+    steps:
+      - uses: actions/checkout@v4
+      - name: nodejs
+        run : echo npm test
+  python :
+    if:  inputs.app_type == 'java'
+    runs-on: [self-hosted, linux, x64]
+    steps:
+      - uses: actions/checkout@v4
+      - name: python
+        run : |
+          echo python -m unittest test-cases.py

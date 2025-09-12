@@ -5,33 +5,12 @@ on:
         required: true
         type: string
 jobs:
-  nodejs:
-    if:  inputs.app_type == 'nodejs'
-    runs-on: [self-hosted, linux, x64]
-    steps:
-      - uses: actions/checkout@v4
-      - name: nodejs
-        run: echo Hello, world!
-
   java:
     if:  inputs.app_type == 'java'
     runs-on: [self-hosted, linux, x64]
     steps:
       - uses: actions/checkout@v4
       - name: java
-        run: echo Hello, world!
+        run : |
+            mvn package
 
-  python:
-    if:  inputs.app_type == 'python'
-    runs-on: [self-hosted, linux, x64]
-    steps:
-      - uses: actions/checkout@v4
-      - name: python
-        run: echo Hello, world!
-  nginx:
-    if:  inputs.app_type == 'nginx'
-    runs-on: [self-hosted, linux, x64]
-    steps:
-      - uses: actions/checkout@v4
-      - name: python
-        run: echo Hello, world!
