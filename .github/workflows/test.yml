@@ -13,14 +13,14 @@ jobs:
       - name: java
         run : echo mvn test
   nodejs:
-    if:  inputs.app_type == 'java'
+    if:  inputs.app_type == 'nodejs'
     runs-on: [self-hosted, linux, x64]
     steps:
       - uses: actions/checkout@v4
       - name: nodejs
         run : echo npm test
   python :
-    if:  inputs.app_type == 'java'
+    if:  inputs.app_type == 'python'
     runs-on: [self-hosted, linux, x64]
     steps:
       - uses: actions/checkout@v4
