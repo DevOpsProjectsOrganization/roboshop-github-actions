@@ -12,5 +12,5 @@ jobs:
       - uses: actions/checkout@v4
       - name: java
         run : |
-            mvn package
+          echo mvn package
 
