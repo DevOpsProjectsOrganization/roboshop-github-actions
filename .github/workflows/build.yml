@@ -19,4 +19,7 @@ jobs:
       - name: Docker build
         run : |
           docker build . 
+          aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 533567530972.dkr.ecr.us-east-1.amazonaws.com
+          docker build frontend:latest 533567530972.dkr.ecr.us-east-1.amazonaws.com/frontend:latest
+          docker push 533567530972.dkr.ecr.us-east-1.amazonaws.com/frontend:latest
 
