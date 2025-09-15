@@ -27,3 +27,11 @@ jobs:
       - name: python
         run : |
           echo python -m unittest test-cases.py
+  nginx :
+    if:  inputs.app_type == 'nginx'
+    runs-on: [self-hosted, linux, x64]
+    steps:
+      - uses: actions/checkout@v4
+      - name: python
+        run : |
+          echo nginx nothing to do

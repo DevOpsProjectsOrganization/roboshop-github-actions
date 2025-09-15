@@ -5,12 +5,18 @@ on:
         required: true
         type: string
 jobs:
-  java:
+  docker-build-push:
     if:  inputs.app_type == 'java'
     runs-on: [self-hosted, linux, x64]
     steps:
       - uses: actions/checkout@v4
-      - name: java
+      - name : download dependencies
         run : |
-          echo mvn package
+          if [${inputs.app_type}=='java']; then
+            mvn package
+          fi
+
+      - name: Docker build
+        run : |
+          docker build . 
 
