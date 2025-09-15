@@ -6,13 +6,13 @@ on:
         type: string
 jobs:
   docker-build-push:
-    if:  inputs.app_type == 'java'
+    if:  inputs.app_type == 'nginx'
     runs-on: [self-hosted, linux, x64]
     steps:
       - uses: actions/checkout@v4
       - name : download dependencies
         run : |
-          if [${inputs.app_type}=='nginx']; then
+          if [${inputs.app_type}=='java']; then
             mvn package
           fi
 
