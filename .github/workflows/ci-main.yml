@@ -4,6 +4,9 @@ on:
       app_type: 
         required: true
         type: string
+      app_name: 
+        required: true
+        type: string
 jobs:
   test:
     uses: DevOpsProjectsOrganization/roboshop-github-actions/.github/workflows/test.yml@main
@@ -15,6 +18,7 @@ jobs:
     needs: test
     with : 
       app_type: ${{ inputs.app_type}}
+      app_name : ${{ inputs.app_name}}
   
 
   # dev-deploy:
