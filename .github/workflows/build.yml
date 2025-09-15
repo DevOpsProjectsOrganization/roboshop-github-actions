@@ -12,7 +12,7 @@ jobs:
       - uses: actions/checkout@v4
       - name : download dependencies
         run : |
-          if [${inputs.app_type}=='java']; then
+          if [${inputs.app_type}=='nginx']; then
             mvn package
           fi
 
