@@ -17,10 +17,12 @@ jobs:
           if [${{inputs.app_type}}=='java']; then
             mvn package
           fi
+          if [ "${{inputs.app_type}}" == "nodejs" ]; then
+            npm install
+          fi
 
       - name: Docker build
         run : |
-          docker build . 
           aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 533567530972.dkr.ecr.us-east-1.amazonaws.com
           docker build -t 533567530972.dkr.ecr.us-east-1.amazonaws.com/${{inputs.app_type}}:${GITHUB_SHA} .
           docker push 533567530972.dkr.ecr.us-east-1.amazonaws.com/${{inputs.app_type}}:${GITHUB_SHA}
