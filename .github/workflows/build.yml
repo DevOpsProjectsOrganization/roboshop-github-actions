@@ -24,6 +24,6 @@ jobs:
       - name: Docker build
         run : |
           aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 533567530972.dkr.ecr.us-east-1.amazonaws.com
-          docker build -t 533567530972.dkr.ecr.us-east-1.amazonaws.com/${{inputs.app_type}}:${GITHUB_SHA} .
-          docker push 533567530972.dkr.ecr.us-east-1.amazonaws.com/${{inputs.app_type}}:${GITHUB_SHA}
+          docker build -t 533567530972.dkr.ecr.us-east-1.amazonaws.com/${{inputs.app_name}}:${GITHUB_SHA} .
+          docker push 533567530972.dkr.ecr.us-east-1.amazonaws.com/${{inputs.app_name}}:${GITHUB_SHA}
 
