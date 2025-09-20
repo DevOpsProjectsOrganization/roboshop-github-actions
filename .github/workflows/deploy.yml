@@ -12,11 +12,13 @@ jobs:
     runs-on: [self-hosted, linux, x64]
     steps:
       - uses: actions/checkout@v5
-      # - uses: actions/checkout@v5
-      - name : deploy the app in dev
         with:
           repository: DevOpsProjectsOrganization/roboshop-helm  
           path: "helm"
+
+      - uses: actions/checkout@v5
+      
+      - name : deploy the app in dev
         run : |
           cd helm
           helm upgrade -i ${{ inputs.app_name }} . -f env-${{ inputs.app_env }}/${{ inputs.app_name }}.yml
