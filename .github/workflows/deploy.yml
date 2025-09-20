@@ -14,10 +14,12 @@ jobs:
       - uses: actions/checkout@v5
         with:
           repository: DevOpsProjectsOrganization/roboshop-helm  
-          path: "helm"
+          path: helm
 
       - uses: actions/checkout@v5
-      
+        with:
+          path: app
+
       - name : deploy the app in dev
         run : |
           cd helm
