@@ -27,7 +27,6 @@ jobs:
   dev-deploy:
     uses: DevOpsProjectsOrganization/roboshop-github-actions/.github/workflows/deploy.yml@main
     needs: build
-    environment: ${{ inputs.app_env }}
     with : 
       app_env: ${{ inputs.app_env}}
       app_name : ${{ inputs.app_name}}
