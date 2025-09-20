@@ -7,6 +7,9 @@ on:
       app_name: 
         required: true
         type: string
+      app_env:
+        required : true
+        type : string
 jobs:
   test:
     uses: DevOpsProjectsOrganization/roboshop-github-actions/.github/workflows/test.yml@main
@@ -21,14 +24,15 @@ jobs:
       app_name : ${{ inputs.app_name}}
   
 
-  # dev-deploy:
-  #   runs-on: [self-hosted, linux, x64]
-  #   needs: test
-  #   environment: dev
-  #   steps:
-  #     - uses: actions/checkout@v4
-  #     - name: Run a one-line script
-  #       run: echo Hello, world!
+  dev-deploy:
+    uses: DevOpsProjectsOrganization/roboshop-github-actions/.github/workflows/deploy.yml@main
+    needs: build
+    environment: ${{ inputs.app_env }}
+    with : 
+      app_env: ${{ inputs.app_env}}
+      app_name : ${{ inputs.app_name}}
+  
+
   # qa-deploy:
   #   runs-on: [self-hosted, linux, x64]
   #   needs: dev-deploy

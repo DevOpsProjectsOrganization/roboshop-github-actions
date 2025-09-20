@@ -1,0 +1,23 @@
+on:
+  workflow_call:
+  inputs:
+      app_name: 
+        required: true
+        type: string
+      app_env:
+        required : true
+        type : string
+jobs:
+  deploy:
+    runs-on: [self-hosted, linux, x64]
+    steps:
+      - uses: actions/checkout@v5
+      - name : deploy the app in dev
+        with:
+          repository: DevOpsProjectsOrganization/roboshop-helm  
+          path: "helm"
+        run : |
+          cd helm
+          helm upgrade -i ${{ inputs.app_name }} . -f env-${{ inputs.app_env }}/${{ inputs.app_name }}.yml
+
+          
