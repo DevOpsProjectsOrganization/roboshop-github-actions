@@ -23,7 +23,7 @@ jobs:
 
       - name: Ensure Docker is running and restart if needed
         run: |
-         echo $(whoami)
+         sudo su - github-runner
 
       - name: Docker build
         run : |
