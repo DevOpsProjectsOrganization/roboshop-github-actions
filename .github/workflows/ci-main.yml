@@ -10,6 +10,9 @@ on:
       app_env:
         required : true
         type : string
+      enabled:
+        required : true
+        type : string
 jobs:
   test:
     uses: DevOpsProjectsOrganization/roboshop-github-actions/.github/workflows/test.yml@main
@@ -30,6 +33,7 @@ jobs:
     with : 
       app_env: ${{ inputs.app_env}}
       app_name : ${{ inputs.app_name}}
+      enabled : ${{ inputs.enabled }}
   
 
   # qa-deploy:
