@@ -23,8 +23,8 @@ jobs:
 
       - name: Ensure Docker is running and restart if needed
         run: |
-          sudo systemctl restart docker
-          sudo systemctl status docker --no-pager
+          systemctl restart docker
+          systemctl status docker --no-pager
 
       - name: Docker build
         run : |
