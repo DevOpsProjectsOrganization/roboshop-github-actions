@@ -20,18 +20,11 @@ jobs:
           if [ "${{inputs.app_type}}" == "nodejs" ]; then
             npm install
           fi
-          
+
       - name: Ensure Docker is running and restart if needed
         run: |
-          CURRENT_USER=$(whoami)
-          if [ "$CURRENT_USER" = "github-runner" ] && groups "$CURRENT_USER" | grep -q '\bdocker\b'; then
-            echo "Restarting Docker for user $CURRENT_USER..."
-            sudo systemctl restart docker
-            sudo systemctl status docker --no-pager
-          else
-            echo "User $CURRENT_USER is not github-runner or not in docker group. Skipping Docker restart."
-          fi
-
+          sudo systemctl restart docker
+          sudo systemctl status docker --no-pager
 
       - name: Docker build
         run : |
