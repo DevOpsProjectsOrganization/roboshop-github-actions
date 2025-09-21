@@ -23,8 +23,7 @@ jobs:
 
       - name: Ensure Docker is running and restart if needed
         run: |
-          systemctl restart docker
-          systemctl status docker --no-pager
+         echo $(whoami)
 
       - name: Docker build
         run : |
