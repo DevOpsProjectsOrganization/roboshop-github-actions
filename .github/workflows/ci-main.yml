@@ -13,6 +13,8 @@ on:
       enabled:
         required : true
         type : string
+# to start the runners, we have to run the following command in the workstation as below at the given path
+## ec2-user@workstation ~/roboshop-github-actions/runner-image ]$ sudo docker run -e ORG=https://github.com/DevOpsProjectsOrganization -e NAME=github-runner-1 -e TOKEN=BGPMM4PEPQLYQXEA5ZZTBHLI2EFMU 533567530972.dkr.ecr.us-east-1.amazonaws.com/runner:latest bash
 jobs:
   test:
     uses: DevOpsProjectsOrganization/roboshop-github-actions/.github/workflows/test.yml@main
