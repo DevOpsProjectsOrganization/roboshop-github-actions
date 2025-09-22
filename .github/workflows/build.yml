@@ -28,8 +28,8 @@ jobs:
           
       - name: Docker build
         run : |
-          docker build -t 533567530972.dkr.ecr.us-east-1.amazonaws.com/${{inputs.app_name}}:${GITHUB_SHA} .
-          
+          sudo docker build -t 533567530972.dkr.ecr.us-east-1.amazonaws.com/${{inputs.app_name}}:${GITHUB_SHA} .
+
       - name: Docker push
         run : |
           docker push 533567530972.dkr.ecr.us-east-1.amazonaws.com/${{inputs.app_name}}:${GITHUB_SHA}
