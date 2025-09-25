@@ -28,11 +28,6 @@ jobs:
           
       - name: Docker build
         run : |
-          # whoami
-          # usermod -aG docker github-runner
-          # usermod -aG docker ec2-user
-          # newgrp docker
-          docker info
           docker build -t 533567530972.dkr.ecr.us-east-1.amazonaws.com/${{inputs.app_name}}:${GITHUB_SHA} .
 
       - name: Docker push
