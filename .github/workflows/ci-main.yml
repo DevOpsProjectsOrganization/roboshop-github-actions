@@ -29,13 +29,13 @@ jobs:
       app_name : ${{ inputs.app_name}}
   
 
-  dev-deploy:
-    uses: DevOpsProjectsOrganization/roboshop-github-actions/.github/workflows/deploy.yml@main
-    needs: build
-    with : 
-      app_env: ${{ inputs.app_env}}
-      app_name : ${{ inputs.app_name}}
-      enabled : ${{ inputs.enabled }}
+  # dev-deploy:
+  #   uses: DevOpsProjectsOrganization/roboshop-github-actions/.github/workflows/deploy.yml@main
+  #   needs: build
+  #   with : 
+  #     app_env: ${{ inputs.app_env}}
+  #     app_name : ${{ inputs.app_name}}
+  #     enabled : ${{ inputs.enabled }}
   
 
   # qa-deploy:
