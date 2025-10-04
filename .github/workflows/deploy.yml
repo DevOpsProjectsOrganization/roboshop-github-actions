@@ -23,4 +23,4 @@ jobs:
         run: |
           cd helm
           aws eks update-kubeconfig --region us-east-1 --name ${{ inputs.app_env }} 
-          helm upgrade -i ${{ inputs.app_name }} . -f env-${{ inputs.app_env }}/${{ inputs.app_name }}.yml --values ./values.yml --set imageTag=${GITHUB_SHA}
+          helm upgrade -i ${{ inputs.app_name }} . -f env-${{ inputs.app_env }}/${{ inputs.app_name }}.yml --set imageTag=${GITHUB_SHA}
