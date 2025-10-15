@@ -34,18 +34,17 @@ jobs:
           aws eks update-kubeconfig --region us-east-1 --name ${{ inputs.app_env }} 
           cd helm
           argocd login argocd-dev.sdevops.shop \
-            --insecure \ 
-            --username admin \ 
+            --insecure \
+            --username admin \
             --password $(kubectl get secrets -n tools argocd-initial-admin-secret -o=jsonpath='{.data.password}' | base64 -d) \
             --grpc-web
-          argocd app create ${{ inputs.app_name }} \ 
-            --repo https://github.com/DevOpsProjectsOrganization/roboshop-helm \
-            --path . \
+          argocd app create ${{ inputs.app_name }} \
+            --repo https://github.com/DevOpsProjectsOrganization/roboshop-helm \            --path . \
             --dest-namespace default \
-            --dest-server https://kubernetes.default.svc \ 
+            --dest-server https://kubernetes.default.svc \
             --values env-${{ inputs.app_env }}/${{ inputs.app_name }}.yml \
             --values ./values.yml \
-            --helm-set imageTag=${GITHUB_SHA} \ 
+            --helm-set imageTag=${GITHUB_SHA} \
             --helm-set schema.enabled=${{ inputs.enabled }} \
             --sync-policy automatic \
             --upsert
