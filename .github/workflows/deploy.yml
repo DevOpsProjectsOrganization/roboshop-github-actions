@@ -39,7 +39,7 @@ jobs:
             --password $(kubectl get secrets -n tools argocd-initial-admin-secret -o=jsonpath='{.data.password}' | base64 -d) \
             --grpc-web
           argocd app create ${{ inputs.app_name }} \
-            --repo https://github.com/DevOpsProjectsOrganization/roboshop-helm \           
+            --repo https://github.com/DevOpsProjectsOrganization/roboshop-helm \
             --path . \
             --dest-namespace default \
             --dest-server https://kubernetes.default.svc \
