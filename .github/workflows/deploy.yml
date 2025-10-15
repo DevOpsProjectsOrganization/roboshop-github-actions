@@ -33,7 +33,7 @@ jobs:
         run : |
           aws eks update-kubeconfig --region us-east-1 --name ${{ inputs.app_env }} 
           cd helm
-          argocd login  argocd-dev.sdevops.shop \
+          argocd login argocd-dev.sdevops.shop \
             --insecure \ 
             --username admin \ 
             --password $(kubectl get secrets -n tools argocd-initial-admin-secret -o=jsonpath='{.data.password}' | base64 -d) \
