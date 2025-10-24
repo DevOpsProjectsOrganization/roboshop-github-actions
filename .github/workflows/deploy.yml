@@ -26,12 +26,12 @@ jobs:
       - name: update kube config and create secrets for all services
         run: |
           aws eks update-kubeconfig --region us-east-1 --name ${{ inputs.app_env }} 
-          cd helm
-          helm upgrade -i ${{ inputs.app_name }} . -f env-${{ inputs.app_env }}/${{ inputs.app_name }}.yml --values ./values.yml --set imageTag=${GITHUB_SHA} --set schema.enabled=${{ inputs.enabled }} --show-only templates/external-secret.yml
+          # cd helm
+          # helm upgrade -i ${{ inputs.app_name }} . -f env-${{ inputs.app_env }}/${{ inputs.app_name }}.yml --values ./values.yml --set imageTag=${GITHUB_SHA} --set schema.enabled=${{ inputs.enabled }} --show-only templates/external-secret.yml
       
       - name : Deploy argo cd
         run : |
-
+          cd helm
           argocd login argocd-dev.sdevops.shop \
             --insecure \
             --username admin \
