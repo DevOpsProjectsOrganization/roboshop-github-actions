@@ -10,6 +10,9 @@ on:
       enabled:
         required : true
         type : string
+      ingress:
+        required : true
+        type : string
 jobs:
   deploy:
     runs-on: self-hosted
@@ -46,5 +49,6 @@ jobs:
             --values ./values.yml \
             --helm-set imageTag=${GITHUB_SHA} \
             --helm-set schema.enabled=${{ inputs.enabled }} \
+            --helm-set ingress.enabled=${{ inputs.ingress}} \
             --sync-policy automatic \
             --upsert
