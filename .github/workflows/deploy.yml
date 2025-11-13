@@ -52,5 +52,4 @@ jobs:
             --helm-set ingress.enabled=${{ inputs.ingress }} \
             --sync-policy automatic \
             --upsert \
-            --project default \
-            --namespace tools
+            --project default 
