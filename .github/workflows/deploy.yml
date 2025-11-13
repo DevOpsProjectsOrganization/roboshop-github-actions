@@ -51,4 +51,6 @@ jobs:
             --helm-set schema.enabled=${{ inputs.enabled }} \
             --helm-set ingress.enabled=${{ inputs.ingress }} \
             --sync-policy automatic \
-            --upsert
+            --upsert \
+            --project default \
+            --namespace tools
